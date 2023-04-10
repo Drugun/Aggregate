@@ -1,0 +1,23 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "X": {
+      "tag": "minecraft:wool"
+    }
+  },
+  "pattern": [
+    "X",
+    "X",
+    "X"
+  ],
+  "result": {
+    "count": 1,
+    "item": "minecraft:leather"
+  },
+  "fabric:load_conditions": [
+    {
+      "condition": "aggregate:readconfig",
+      "value": "leatherrecipe"
+    }
+  ]
+}

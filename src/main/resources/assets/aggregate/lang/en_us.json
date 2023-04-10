@@ -1,0 +1,33 @@
+{
+  "text.config.aggregate-config.title": "Aggregate options",
+
+  "text.config.aggregate-config.option.mudSlow": "Mud slows down",
+  "text.config.aggregate-config.option.javelinRecipe": "Allow crafting stone javelins",
+  "text.config.aggregate-config.option.animalBones": "Animals drop bones",
+  "text.config.aggregate-config.option.suffocationTimer": "Suffocation timer in ticks (1 second = 20 ticks)",
+  "text.config.aggregate-config.option.sugarCane": "Allow planting sugar cane on mud",
+  "text.config.aggregate-config.option.safeFire": "Fire doesn't spread or destroy blocks",
+  "text.config.aggregate-config.option.safeCreepers": "Creepers don't damage blocks",
+  "text.config.aggregate-config.option.arrowRecipe": "Enable additional arrow crafting recipes",
+  "text.config.aggregate-config.option.safeItemsExplosion": "Items are immune to explosions",
+  "text.config.aggregate-config.option.safeItemsFire": "Items are immune to fire",
+  "text.config.aggregate-config.option.frogMixin": "Frogs have random colors",
+  "text.config.aggregate-config.option.leatherRecipe": "Leather can be crafted from wool",
+  "text.config.aggregate-config.option.improveItemMaterials": "Sub-diamond tools improved",
+  "text.config.aggregate-config.option.improveArmourMaterials": "Sub-diamond armour improved",
+  "text.config.aggregate-config.option.infiniteRepair": "No cost penalty for repeat item repairs",
+  "text.config.aggregate-config.option.armourWeight": "Heavy armour breaks weak blocks",
+  "text.config.aggregate-config.option.betterMovement": "Altered movement physics",
+  "text.config.aggregate-config.option.waterFloating": "Player floats in water",
+  "text.config.aggregate-config.option.iceBreaking": "Falling on ice breaks it",
+  "text.config.aggregate-config.option.magmaBreaking": "Falling on magma breaks it",
+  "text.config.aggregate-config.option.mudBonemeal": "Bone meal can be used on mud blocks",
+
+
+
+
+  "item.aggregate.javelin_stone": "Stone Javelin"
+
+
+}
+

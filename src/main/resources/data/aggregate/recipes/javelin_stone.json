@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "X": {
+      "tag": "minecraft:stone_crafting_materials"
+    },
+    "Y": {
+      "tag": "minecraft:planks"
+    }
+  },
+  "pattern": [
+    "YYX"
+  ],
+  "result": {
+    "count": 1,
+    "item": "aggregate:javelin_stone"
+  },
+  "fabric:load_conditions": [
+    {
+      "condition": "aggregate:readconfig",
+      "value": "javelinrecipe"
+    }
+  ]
+}

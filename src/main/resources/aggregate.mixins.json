@@ -1,0 +1,31 @@
+{
+  "required": true,
+  "minVersion": "0.8",
+  "package": "net.drugunMC.aggregate.mixin",
+  "compatibilityLevel": "JAVA_17",
+  "plugin": "net.drugunMC.aggregate.AggregateMixinPlugin",
+  "mixins": [
+    "ArmorMaterialsMixin",
+    "CreeperMixin",
+    "FireMixin",
+    "FireproofItemsMixin",
+    "FrogMixin",
+    "IceBlockMixin",
+    "ItemRepairMixin",
+    "LilyPadMixin",
+    "LivingEntityMixin",
+    "MagmaBlockMixin",
+    "MudBlockMixin",
+    "PlayerEntityMixin",
+    "SuffocationMixin",
+    "SugarCaneMixin",
+    "ToolMaterialsMixin"
+  ],
+  "server": [
+  ],
+  "client": [
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}

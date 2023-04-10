@@ -1,0 +1,17 @@
+accessWidener	v1	named
+
+accessible field net/minecraft/block/MudBlock COLLISION_SHAPE Lnet/minecraft/util/shape/VoxelShape;
+mutable field net/minecraft/item/ToolMaterials itemDurability I
+accessible field net/minecraft/item/ToolMaterials itemDurability I
+mutable field net/minecraft/item/ToolMaterials miningSpeed F
+accessible field net/minecraft/item/ToolMaterials miningSpeed F
+mutable field net/minecraft/item/ToolMaterials miningLevel I
+accessible field net/minecraft/item/ToolMaterials miningLevel I
+mutable field net/minecraft/item/ToolMaterials enchantability I
+accessible field net/minecraft/item/ToolMaterials enchantability I
+mutable field net/minecraft/item/ToolMaterials attackDamage F
+accessible field net/minecraft/item/ToolMaterials attackDamage F
+mutable field net/minecraft/item/ArmorMaterials durabilityMultiplier I
+accessible field net/minecraft/item/ArmorMaterials durabilityMultiplier I
+accessible field net/minecraft/entity/LivingEntity jumping Z
+
