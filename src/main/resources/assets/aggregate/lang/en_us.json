@@ -22,6 +22,7 @@
   "text.config.aggregate-config.option.iceBreaking": "Falling on ice breaks it",
   "text.config.aggregate-config.option.magmaBreaking": "Falling on magma breaks it",
   "text.config.aggregate-config.option.mudBonemeal": "Bone meal can be used on mud blocks",
+  "text.config.aggregate-config.option.climbing": "Allow freeform climbing",
 
 
 

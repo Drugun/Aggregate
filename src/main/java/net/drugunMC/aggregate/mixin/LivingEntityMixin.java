@@ -6,6 +6,11 @@ import net.minecraft.block.Blocks;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.tag.BlockTags;
+import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.Direction;
+import net.minecraft.util.math.Vec3d;
+import net.minecraft.util.shape.VoxelShapes;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.*;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
@@ -84,13 +89,46 @@ public class LivingEntityMixin {
 
     @Inject(method = "isClimbing", at = @At("HEAD"), cancellable = true)
     private void injected6(CallbackInfoReturnable<Boolean> cir){
-        if( AggregateMain.CONFIG.mudSlow() && ((LivingEntity)(Object)this).getType() == EntityType.PLAYER ){
-            if( ((LivingEntity)(Object)this).getBlockStateAtPos().isOf(Blocks.MUD )){
-                cir.setReturnValue(true);
-                cir.cancel();
-            }
+        if( ((LivingEntity)(Object)this).getType() == EntityType.PLAYER ){
+            if( AggregateMain.CONFIG.mudSlow() ){
+                if( ((LivingEntity)(Object)this).getBlockStateAtPos().isOf(Blocks.MUD) && (((LivingEntity)(Object)this).horizontalCollision || ((LivingEntity)(Object)this).world.getBlockState(((LivingEntity)(Object)this).getBlockPos().up()).isIn(BlockTags.CLIMBABLE) ) ){
+                    cir.setReturnValue(true);
+                    cir.cancel();
+                }
 
+            }
+            if( AggregateMain.CONFIG.climbing() ){
+                if( ((PlayerEntity)(Object)this).horizontalCollision ){
+                    BlockPos pos = ((LivingEntity)(Object)this).getBlockPos();
+                    if( isBlockClimbable(pos.north()) || isBlockClimbable(pos.north().up()) ){
+                        cir.setReturnValue(true);
+                        cir.cancel();
+                    }
+                    else if( isBlockClimbable(pos.south()) || isBlockClimbable(pos.south().up()) ){
+                        cir.setReturnValue(true);
+                        cir.cancel();
+                    }
+                    else if( isBlockClimbable(pos.east()) || isBlockClimbable(pos.east().up()) ){
+                        cir.setReturnValue(true);
+                        cir.cancel();
+                    }
+                    else if( isBlockClimbable(pos.west()) || isBlockClimbable(pos.west().up()) ){
+                        cir.setReturnValue(true);
+                        cir.cancel();
+                    }
+                }
+            }
         }
+
+    }
+
+    public boolean isBlockClimbable(BlockPos pos){
+        if( ((LivingEntity)(Object)this).world.getBlockState(pos).getCollisionShape(((LivingEntity)(Object)this).world, pos) != VoxelShapes.empty() ){
+            if( ((LivingEntity)(Object)this).world.getBlockState(pos.up()).getCollisionShape(((LivingEntity)(Object)this).world, pos.up()) == VoxelShapes.empty() ){
+                return true;
+            }
+        }
+        return false;
     }
 
 

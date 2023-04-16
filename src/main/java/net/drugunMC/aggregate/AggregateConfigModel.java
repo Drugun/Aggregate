@@ -80,6 +80,9 @@ public class AggregateConfigModel {
     @RestartRequired
     public boolean mudBonemeal = true;
 
+    @RestartRequired
+    public boolean climbing = true;
+
 
 
 

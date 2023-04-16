@@ -7,6 +7,7 @@ import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.passive.PassiveEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.server.world.ServerWorld;
+import net.minecraft.tag.BlockTags;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.util.math.random.Random;
@@ -231,16 +232,21 @@ public abstract class MudBlockMixin extends Block implements Fertilizable {
 			if( entity instanceof PlayerEntity){
 				if( ((PlayerEntity)entity).getHeavy() ){
 					entity.slowMovement(state, new Vec3d(0.3, 0.7, 0.3));
-					((PlayerEntity) entity).setJumping(false);
-					((PlayerEntity) entity).setJumpPreventionTicks(3);
+					if (! world.getBlockState(pos.up()).isIn(BlockTags.CLIMBABLE)){
+						((PlayerEntity) entity).setJumpPreventionTicks(3);
+						((PlayerEntity) entity).setJumping(false);
+					}
 					return;
 				}
 			}
 		}
-		if( AggregateMain.CONFIG.mudSlow()){
+		if( AggregateMain.CONFIG.mudSlow() ){
 			if(entity instanceof PlayerEntity && world.getBlockState(pos.down()).getBlock() instanceof MudBlock){
-				((PlayerEntity) entity).setJumpPreventionTicks(3);
-				((PlayerEntity) entity).setJumping(false);
+				if (! world.getBlockState(pos.up()).isIn(BlockTags.CLIMBABLE)){
+					((PlayerEntity) entity).setJumpPreventionTicks(3);
+					((PlayerEntity) entity).setJumping(false);
+				}
+
 				if(world.getBlockState(pos.up()).getBlock() instanceof AirBlock){
 					entity.slowMovement(state, new Vec3d(0.5, 0.7, 0.5));
 				}

@@ -64,7 +64,6 @@ public abstract class PlayerEntityMixin extends LivingEntity implements PlayerWe
                 }
 
 
-                //DrugunsStuff.LOGGER.info(String.valueOf(isHeavy));
 
             }
             else{
