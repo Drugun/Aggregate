@@ -83,6 +83,9 @@ public class AggregateConfigModel {
     @RestartRequired
     public boolean climbing = true;
 
+    @RestartRequired
+    public boolean disableKnockback = true;
+
 
 
 

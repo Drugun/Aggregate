@@ -13,7 +13,7 @@ import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
 
 @Mixin(LilyPadBlock.class)
-public class LilyPadMixin extends PlantBlock {
+public abstract class LilyPadMixin extends PlantBlock {
 
 
     @Shadow @Final protected static VoxelShape SHAPE;

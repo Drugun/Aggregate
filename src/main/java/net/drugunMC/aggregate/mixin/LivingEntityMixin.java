@@ -5,18 +5,17 @@ import net.drugunMC.aggregate.AggregateMain;
 import net.minecraft.block.Blocks;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.LivingEntity;
+import net.minecraft.entity.damage.DamageSource;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.tag.BlockTags;
 import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.math.Direction;
-import net.minecraft.util.math.Vec3d;
 import net.minecraft.util.shape.VoxelShapes;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.*;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 @Mixin(LivingEntity.class)
-public class LivingEntityMixin {
+public abstract class LivingEntityMixin {
 
 
 
@@ -129,6 +128,17 @@ public class LivingEntityMixin {
             }
         }
         return false;
+    }
+
+    @Redirect(method = "damage", at = @At(value = "INVOKE", target = "Lnet/minecraft/entity/LivingEntity;takeKnockback(DDD)V"))
+    private void injected7(LivingEntity instance, double strength, double x, double z) {
+        if(AggregateMain.CONFIG.disableKnockback()){
+            return;
+        }
+        else{
+            instance.takeKnockback(strength, x, z);
+        }
+
     }
 
 

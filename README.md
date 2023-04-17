@@ -27,7 +27,8 @@ Items marked with (C) can be disabled/configured in mod options. Items marked wi
 - Altered player movement physics. Player air drag and air control greatly reduced. Jumping preserves current speed. (C)
 - Players don't sink in water. (C)
 - Ice and magma blocks break when a player falls on them from more than 2 blocks height. (C)
-- Players can climb 1 to 2 block high walls, 3 block high with jump. (C)
+- Players can climb 1 to 2 block high walls and cliffs, 3 block high with jump. (C)
+- Players and mobs are not knocked away by normal attacks. (C)
 
 
 ## Required mods
