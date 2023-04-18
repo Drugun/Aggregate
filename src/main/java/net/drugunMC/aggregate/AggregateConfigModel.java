@@ -81,7 +81,11 @@ public class AggregateConfigModel {
     public boolean mudBonemeal = true;
 
     @RestartRequired
-    public boolean climbing = true;
+    public boolean climbingEnabled = true;
+
+    @RestartRequired
+    @RangeConstraint(min = -90, max = 90)
+    public float climbingAngle = -45f;
 
     @RestartRequired
     public boolean disableKnockback = true;

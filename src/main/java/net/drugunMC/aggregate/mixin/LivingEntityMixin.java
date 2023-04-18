@@ -96,8 +96,8 @@ public abstract class LivingEntityMixin {
                 }
 
             }
-            if( AggregateMain.CONFIG.climbing() ){
-                if( ((PlayerEntity)(Object)this).horizontalCollision ){
+            if( AggregateMain.CONFIG.climbingEnabled() ){
+                if( ((PlayerEntity)(Object)this).horizontalCollision && -((PlayerEntity)(Object)this).getPitch() > AggregateMain.CONFIG.climbingAngle() ){
                     BlockPos pos = ((LivingEntity)(Object)this).getBlockPos();
                     if( isBlockClimbable(pos.north()) || isBlockClimbable(pos.north().up()) ){
                         cir.setReturnValue(true);
