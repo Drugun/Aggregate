@@ -27,10 +27,10 @@ public abstract class LilyPadMixin extends PlantBlock {
 
     @Override
     public VoxelShape getCollisionShape(BlockState state, BlockView world, BlockPos pos, ShapeContext context) {
-        if( AggregateMain.CONFIG.armourWeight() ){
+        if( AggregateMain.CONFIG.armourWeightLilyPad() ){
             if(context instanceof EntityShapeContext){
                 if( ((EntityShapeContext) context).getEntity() instanceof PlayerEntity){
-                    if( ((PlayerEntity) ((EntityShapeContext) context).getEntity()).getHeavy() ){
+                    if( ((PlayerEntity) ((EntityShapeContext) context).getEntity()).getArmourWeight() >= AggregateMain.CONFIG.armourWeightHeavy() ){
                         return EMPTY_SHAPE;
                     }
                 }

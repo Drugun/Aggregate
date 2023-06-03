@@ -23,7 +23,8 @@ Items marked with (C) can be disabled/configured in mod options. Items marked wi
 - Sub-diamond tools improved. (C)
 - Sub-diamond armour improved. (C)
 - Disabled escalating level cost penalty for repeated item repairs at anvil. (C)
-- Weak blocks (mud, ice, magma, lilypad) cannot support players wearing heavy armour (1 piece or more, leather = 0, boots/helmet = 0.5). (C)
+- Armour weight system (chest/legs = 4, boots/helmet = 2, leather = 0). (C)
+- Weak blocks (mud, ice, magma, lilypad) cannot support players wearing heavy armour.
 - Altered player movement physics. Player air drag and air control greatly reduced. Jumping preserves current speed. (C)
 - Players don't sink in water. (C)
 - Ice and magma blocks break when a player falls on them from more than 2 blocks height. (C)

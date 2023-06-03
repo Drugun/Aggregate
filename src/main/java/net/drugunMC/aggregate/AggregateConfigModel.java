@@ -66,22 +66,41 @@ public class AggregateConfigModel {
     public boolean armourWeight = true;
 
     @RestartRequired
+    public boolean armourWeightLilyPad = true;
+
+    @RestartRequired
+    public boolean armourWeightMud = true;
+
+    @RestartRequired
+    @RangeConstraint(min = 0, max = 20)
+    public int armourWeightHeavy = 4;
+
+    @RestartRequired
     public boolean betterMovement = true;
 
     @RestartRequired
     public boolean waterFloating = true;
 
     @RestartRequired
-    public boolean iceBreaking = true;
+    public boolean iceFallBreaking = true;
 
     @RestartRequired
-    public boolean magmaBreaking = true;
+    public boolean magmaFallBreaking = true;
+
+    @RestartRequired
+    public boolean iceWeightBreaking = true;
+
+    @RestartRequired
+    public boolean magmaWeightBreaking = true;
 
     @RestartRequired
     public boolean mudBonemeal = true;
 
     @RestartRequired
     public boolean climbingEnabled = true;
+
+    @RestartRequired
+    public boolean climbingWeightCheck = true;
 
     @RestartRequired
     @RangeConstraint(min = -90, max = 90)

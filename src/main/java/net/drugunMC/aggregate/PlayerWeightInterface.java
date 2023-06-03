@@ -3,11 +3,11 @@ package net.drugunMC.aggregate;
 
 public interface PlayerWeightInterface {
 
-    default public boolean getHeavy() {
-        return false;
+    default public int getArmourWeight() {
+        return 0;
     }
 
-    default public void setHeavy(boolean in) {
+    default public void setArmourWeight(int in) {
         return;
     }
 

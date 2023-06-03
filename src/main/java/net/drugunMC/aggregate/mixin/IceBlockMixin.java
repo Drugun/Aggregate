@@ -21,9 +21,9 @@ public abstract class IceBlockMixin extends TransparentBlock {
 
     @Override
     public void onLandedUpon(World world, BlockState state, BlockPos pos, Entity entity, float fallDistance){
-        if( !world.isClient && (AggregateMain.CONFIG.armourWeight() || AggregateMain.CONFIG.iceBreaking()) ){
+        if( !world.isClient && (AggregateMain.CONFIG.iceWeightBreaking() || AggregateMain.CONFIG.iceFallBreaking()) ){
             if( entity instanceof PlayerEntity){
-                if( (AggregateMain.CONFIG.armourWeight() && ((PlayerEntity)entity).getHeavy()) || (AggregateMain.CONFIG.iceBreaking() && fallDistance > 2) ){
+                if( (AggregateMain.CONFIG.iceWeightBreaking() && ((PlayerEntity)entity).getArmourWeight() >= AggregateMain.CONFIG.armourWeightHeavy()) || (AggregateMain.CONFIG.iceFallBreaking() && fallDistance > 2) ){
                     ((PlayerEntity) entity).setJumpPreventionTicks(20);
 
                     world.breakBlock(pos, false);
@@ -110,10 +110,10 @@ public abstract class IceBlockMixin extends TransparentBlock {
 
     @Override
     public void onSteppedOn(World world, BlockPos pos, BlockState state, Entity entity){
-        if( !world.isClient && AggregateMain.CONFIG.armourWeight() ){
+        if( !world.isClient && AggregateMain.CONFIG.iceWeightBreaking() ){
             if( entity instanceof PlayerEntity){
-                if( ((PlayerEntity)entity).getHeavy() ){
-                    if(world.random.nextInt(50) == 0){
+                if( ((PlayerEntity)entity).getArmourWeight() >= AggregateMain.CONFIG.armourWeightHeavy() ){
+                    if(world.random.nextInt(100) == 0){
                         ((PlayerEntity) entity).setJumpPreventionTicks(20);
 
                         world.breakBlock(pos, false);

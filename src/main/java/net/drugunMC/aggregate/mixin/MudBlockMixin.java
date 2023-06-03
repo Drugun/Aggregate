@@ -32,11 +32,11 @@ public abstract class MudBlockMixin extends Block implements Fertilizable {
 
 
 	private static final VoxelShape FULL_SHAPE = VoxelShapes.cuboid(0.0, 0.0, 0.0, 1.0, 1.0, 1.0);
-	private static final VoxelShape SHALLOW_SHAPE = VoxelShapes.cuboid(0.0, 0.0, 0.0, 1.0, 2.5/4.0, 1.0);
-	private static final VoxelShape SHALLOW_SHAPE_PLANTED = VoxelShapes.cuboid(0.0, 0.0, 0.0, 1.0, 3.0/4.0, 1.0);
+	private static final VoxelShape SHALLOW_SHAPE = VoxelShapes.cuboid(0.0, 0.0, 0.0, 1.0, 0.6, 1.0);
+	private static final VoxelShape SHALLOW_SHAPE_PLANTED = VoxelShapes.cuboid(0.0, 0.0, 0.0, 1.0, 0.75, 1.0);
 
-	private static final VoxelShape BELOW_SHAPE = VoxelShapes.cuboid(0.0, 0.0, 0.0, 1.0, 3.0/4.0, 1.0);
-	private static final VoxelShape DEEP_SHAPE_PLANTED = VoxelShapes.cuboid(0.05, 0.0, 0.05, 0.95, 0.8/4.0, 0.95);
+	private static final VoxelShape BELOW_SHAPE = VoxelShapes.cuboid(0.0, 0.0, 0.0, 1.0, 0.95, 1.0);
+	private static final VoxelShape DEEP_SHAPE_PLANTED = VoxelShapes.cuboid(0.05, 0.0, 0.05, 0.95, 0.28, 0.95);
 	private static final VoxelShape EMPTY_SHAPE = VoxelShapes.cuboid(0.0, 0.0, 0.0, 0.0, 0.0, 0.0);
 
 
@@ -123,10 +123,10 @@ public abstract class MudBlockMixin extends Block implements Fertilizable {
 	@Override
 	@SuppressWarnings("deprecation")
 	public VoxelShape getCollisionShape(BlockState state, BlockView world, BlockPos pos, ShapeContext context) {
-		if( AggregateMain.CONFIG.armourWeight() ){
+		if( AggregateMain.CONFIG.armourWeightMud() ){
 			if(context instanceof EntityShapeContext){
 				if( ((EntityShapeContext) context).getEntity() instanceof PlayerEntity){
-					if( ((PlayerEntity) ((EntityShapeContext) context).getEntity()).getHeavy() ){
+					if( ((PlayerEntity) ((EntityShapeContext) context).getEntity()).getArmourWeight() >= AggregateMain.CONFIG.armourWeightHeavy() ){
 						return EMPTY_SHAPE;
 					}
 				}
@@ -228,9 +228,9 @@ public abstract class MudBlockMixin extends Block implements Fertilizable {
 
 	@Override
 	public void onEntityCollision(BlockState state, World world, BlockPos pos, Entity entity) {
-		if( AggregateMain.CONFIG.armourWeight() ){
+		if( AggregateMain.CONFIG.armourWeightMud() ){
 			if( entity instanceof PlayerEntity){
-				if( ((PlayerEntity)entity).getHeavy() ){
+				if( ((PlayerEntity)entity).getArmourWeight() >= AggregateMain.CONFIG.armourWeightHeavy() ){
 					entity.slowMovement(state, new Vec3d(0.3, 0.7, 0.3));
 					if (! world.getBlockState(pos.up()).isIn(BlockTags.CLIMBABLE)){
 						((PlayerEntity) entity).setJumpPreventionTicks(3);

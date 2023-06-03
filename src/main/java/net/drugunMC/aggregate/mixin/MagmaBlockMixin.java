@@ -21,9 +21,9 @@ public abstract class MagmaBlockMixin extends Block {
 
     @Override
     public void onLandedUpon(World world, BlockState state, BlockPos pos, Entity entity, float fallDistance){
-        if( !world.isClient && (AggregateMain.CONFIG.armourWeight() || AggregateMain.CONFIG.magmaBreaking()) ){
+        if( !world.isClient && (AggregateMain.CONFIG.magmaWeightBreaking() || AggregateMain.CONFIG.magmaFallBreaking()) ){
             if( entity instanceof PlayerEntity){
-                if( (AggregateMain.CONFIG.armourWeight() && ((PlayerEntity)entity).getHeavy()) || (AggregateMain.CONFIG.magmaBreaking() && fallDistance > 2) ){
+                if( (AggregateMain.CONFIG.magmaWeightBreaking() && ((PlayerEntity)entity).getArmourWeight() >= AggregateMain.CONFIG.armourWeightHeavy()) || (AggregateMain.CONFIG.magmaFallBreaking() && fallDistance > 2) ){
                     ((PlayerEntity) entity).setJumpPreventionTicks(20);
 
                     world.breakBlock(pos, false);
@@ -110,10 +110,10 @@ public abstract class MagmaBlockMixin extends Block {
 
     @Inject(method = "onSteppedOn", at = @At("HEAD"))
     public void injectedA(World world, BlockPos pos, BlockState state, Entity entity, CallbackInfo ci){
-        if( !world.isClient && AggregateMain.CONFIG.armourWeight() ){
+        if( !world.isClient && AggregateMain.CONFIG.magmaWeightBreaking() ){
             if( entity instanceof PlayerEntity){
-                if( ((PlayerEntity)entity).getHeavy() ){
-                    if(world.random.nextInt(50) == 0){
+                if( ((PlayerEntity)entity).getArmourWeight() >= AggregateMain.CONFIG.armourWeightHeavy() ){
+                    if(world.random.nextInt(100) == 0){
                         ((PlayerEntity) entity).setJumpPreventionTicks(20);
 
                         world.breakBlock(pos, false);

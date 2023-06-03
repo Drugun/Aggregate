@@ -8,6 +8,7 @@ import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.damage.DamageSource;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.tag.BlockTags;
+import net.minecraft.tag.FluidTags;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.shape.VoxelShapes;
 import org.spongepowered.asm.mixin.Mixin;
@@ -64,7 +65,7 @@ public abstract class LivingEntityMixin {
 
     @ModifyVariable(method = "applyFluidMovingSpeed", at = @At("HEAD"), ordinal = 0, argsOnly = true)
     private double injected4(double in) {
-        if( AggregateMain.CONFIG.waterFloating() && ((LivingEntity)(Object)this).getType() == EntityType.PLAYER ){
+        if( AggregateMain.CONFIG.waterFloating() && ((LivingEntity)(Object)this).getType() == EntityType.PLAYER && ((LivingEntity)(Object)this).getFluidHeight(FluidTags.WATER) > 1.1 ){
             return 0.00f;
         }
         else {
@@ -75,7 +76,7 @@ public abstract class LivingEntityMixin {
 
     @ModifyConstant(method = "applyFluidMovingSpeed", constant = @Constant(doubleValue = 0.003))
     private double injected5(double value) {
-        if( AggregateMain.CONFIG.waterFloating() && ((LivingEntity)(Object)this).getType() == EntityType.PLAYER ){
+        if( AggregateMain.CONFIG.waterFloating() && ((LivingEntity)(Object)this).getType() == EntityType.PLAYER && ((LivingEntity)(Object)this).getFluidHeight(FluidTags.WATER) > 1.1 ){
             return 0.00f;
         }
         else{
@@ -96,7 +97,7 @@ public abstract class LivingEntityMixin {
                 }
 
             }
-            if( AggregateMain.CONFIG.climbingEnabled() ){
+            if( AggregateMain.CONFIG.climbingEnabled() && !(AggregateMain.CONFIG.climbingEnabled() && ((PlayerEntity)(Object)this).getArmourWeight() >= AggregateMain.CONFIG.armourWeightHeavy() ) ){
                 if( ((PlayerEntity)(Object)this).horizontalCollision && -((PlayerEntity)(Object)this).getPitch() > AggregateMain.CONFIG.climbingAngle() ){
                     BlockPos pos = ((LivingEntity)(Object)this).getBlockPos();
                     if( isBlockClimbable(pos.north()) || isBlockClimbable(pos.north().up()) ){
