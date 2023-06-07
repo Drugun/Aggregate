@@ -72,8 +72,14 @@ public class AggregateConfigModel {
     public boolean armourWeightMud = true;
 
     @RestartRequired
+    public boolean armourWeightMoss = true;
+
+    @RestartRequired
+    public boolean armourWeightFallingBlocks = true;
+
+    @RestartRequired
     @RangeConstraint(min = 0, max = 20)
-    public int armourWeightHeavy = 4;
+    public int armourWeightHeavy = 7;
 
     @RestartRequired
     public boolean betterMovement = true;

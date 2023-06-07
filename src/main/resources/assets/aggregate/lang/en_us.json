@@ -19,6 +19,8 @@
   "text.config.aggregate-config.option.armourWeight": "Enable the armour weight system",
   "text.config.aggregate-config.option.armourWeightLilyPad": "Lily pads cannot hold heavily armoured players",
   "text.config.aggregate-config.option.armourWeightMud": "Mud blocks cannot hold heavily armoured players",
+  "text.config.aggregate-config.option.armourWeightMoss": "Moss carpets cannot hold heavily armoured players",
+  "text.config.aggregate-config.option.armourWeightFallingBlocks": "Sand and gravel cannot hold heavily armoured players",
   "text.config.aggregate-config.option.armourWeightHeavy": "Armour weight - heavy threshold",
   "text.config.aggregate-config.option.betterMovement": "Altered movement physics",
   "text.config.aggregate-config.option.waterFloating": "Player floats in water",

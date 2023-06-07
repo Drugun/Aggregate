@@ -1,35 +1,37 @@
 # Aggregate
 
-A collection of various small additions and changes bundled into one mod. All of them can be individually enabled or disabled.
+A collection of various small additions and changes bundled into one mod. Most can be individually enabled, disabled or configured. The rest are enabled via datapacks (built-in, no additional download needed).
 
 ## Contents
-Items marked with (C) can be disabled/configured in mod options. Items marked with (D) can be enabled by loading one of the bundled datapacks (built-in, no additional download needed).
 
-- Added stone javelins. Similar to tridents, but stackable, weaker, and easily craftable. (C)
-- Large animals drop bones. (C)
-- New crafting recipes for arrows, substituting flint for stone or bones. (C)
-- Mud blocks slow down movement. (C)
-- Mud blocks spawn in swamps and jungles along with moss carpets. (D)
-- All items are immune to fire and explosions. (C)
-- Sugar cane can be planted on mud. Planting it on mud doesn't require water. (C)
-- Players and mobs have a couple seconds before they start suffocating inside blocks. (C)
-- Fire does not destroy blocks and does not spread. (C)
-- Creeper explosions don't damage blocks. (C)
-- Frogs have random colours. (C)
-- Frogs spawn in jungles. (D)
-- Bone meal can be used on mud. (C)
-- More grass in swamps. (D)
-- Leather can be crafted from wool. (C)
-- Sub-diamond tools improved. (C)
-- Sub-diamond armour improved. (C)
-- Disabled escalating level cost penalty for repeated item repairs at anvil. (C)
-- Armour weight system (chest/legs = 4, boots/helmet = 2, leather = 0). (C)
-- Weak blocks (mud, ice, magma, lilypad) cannot support players wearing heavy armour.
-- Altered player movement physics. Player air drag and air control greatly reduced. Jumping preserves current speed. (C)
-- Players don't sink in water. (C)
-- Ice and magma blocks break when a player falls on them from more than 2 blocks height. (C)
-- Players can climb 1 to 2 block high walls and cliffs, 3 block high with jump. (C)
-- Players and mobs are not knocked away by normal attacks. (C)
+- Features controlled by via mod config menu:
+  - Added stone javelins. Similar to tridents, but stackable, weaker, and easily craftable.
+  - Large animals drop bones.
+  - New crafting recipes for arrows, substituting flint for stone or bones.
+  - All items are immune to fire and explosions.
+  - Players and mobs have a couple seconds before they start suffocating inside blocks.
+  - Fire does not destroy blocks and does not spread.
+  - Sugar cane can be planted on mud. Planting it on mud doesn't require water.
+  - Mud blocks slow down movement.
+  - Creeper explosions don't damage blocks.
+  - Frogs have random colours.
+  - Bone meal can be used on mud.
+  - Leather can be crafted from wool.
+  - Sub-diamond tools improved.
+  - Sub-diamond armour improved.
+  - Disabled escalating level cost penalty for repeated item repairs at anvil.
+  - Armour weight system (chest/legs = 4, boots/helmet = 2, leather = 0).
+  - Weak blocks (ice, magma, lilypad, mud, moss carpet, sand, gravel) cannot support players wearing heavy armour and will fail in different ways.
+  - Altered player movement physics. Player air drag and air control greatly reduced. Jumping preserves current speed.
+  - Players don't sink in water.
+  - Ice and magma blocks break when a player falls on them from more than 2 blocks height.
+  - Players can climb 1 to 2 block high walls and cliffs, 3 block high with jump.
+  - Players and mobs are not knocked away by normal attacks.
+- Features added via Aggregate biome features datapack:
+  - Frogs spawn in jungles.
+  - More grass in swamps.
+  - Mud blocks spawn in swamps and jungles along with moss carpets.
+
 
 
 ## Required mods

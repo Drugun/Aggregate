@@ -66,6 +66,9 @@ public abstract class PlayerEntityMixin extends LivingEntity implements PlayerWe
                 armourWeight = arm;
 
             }
+            else{
+                armourWeight = 0;
+            }
 
 
 

@@ -29,14 +29,14 @@ public class AggregateMain implements ModInitializer {
 
 	public static final String ModID = "aggregate";
 
-	public static final AggregateConfig CONFIG = AggregateConfig.createAndLoad();
+	public static final net.drugunMC.aggregate.AggregateConfig CONFIG = net.drugunMC.aggregate.AggregateConfig.createAndLoad();
 
 	static {
 		AggregateJsonCondProvider.init();
 	}
 
 
-	public static final Identifier JUNGLE_SWAMP_ADDITIONS = new Identifier(ModID, "jungle-swamp-additions");
+	public static final Identifier AGGREGATE_BIOME_FEATURES = new Identifier(ModID, "aggregate-biome-features");
 
 
 	public static final EntityType<JavelinStoneEntity> JavelinStoneEntityType = Registry.register(
@@ -77,7 +77,7 @@ public class AggregateMain implements ModInitializer {
 
 
 		FabricLoader.getInstance().getModContainer(ModID).ifPresent((modContainer) -> {
-			ResourceManagerHelper.registerBuiltinResourcePack(JUNGLE_SWAMP_ADDITIONS, modContainer, "Aggregate - jungles/swamps", ResourcePackActivationType.NORMAL);
+			ResourceManagerHelper.registerBuiltinResourcePack(AGGREGATE_BIOME_FEATURES, modContainer, "Aggregate - biomes", ResourcePackActivationType.NORMAL);
 		});
 
 
