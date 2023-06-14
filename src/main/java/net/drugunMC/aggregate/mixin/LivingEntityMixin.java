@@ -116,6 +116,25 @@ public abstract class LivingEntityMixin {
                         cir.setReturnValue(true);
                         cir.cancel();
                     }
+                    else if( AggregateMain.CONFIG.climbingLenient() ){
+                        if( isBlockClimbable(pos.north().east()) || isBlockClimbable(pos.north().east().up()) ){
+                            cir.setReturnValue(true);
+                            cir.cancel();
+                        }
+                        else if( isBlockClimbable(pos.north().west()) || isBlockClimbable(pos.north().west().up()) ){
+                            cir.setReturnValue(true);
+                            cir.cancel();
+                        }
+                        else if( isBlockClimbable(pos.south().east()) || isBlockClimbable(pos.south().east().up()) ){
+                            cir.setReturnValue(true);
+                            cir.cancel();
+                        }
+                        else if( isBlockClimbable(pos.south().west()) || isBlockClimbable(pos.south().west().up()) ){
+                            cir.setReturnValue(true);
+                            cir.cancel();
+                        }
+                    }
+
                 }
             }
         }

@@ -31,8 +31,11 @@ public class AggregateMain implements ModInitializer {
 
 	public static final net.drugunMC.aggregate.AggregateConfig CONFIG = net.drugunMC.aggregate.AggregateConfig.createAndLoad();
 
+
+
 	static {
 		AggregateJsonCondProvider.init();
+		//PatchedTestConditions.register( new Identifier(ModID, "aggregate-cfg"), new AggregateUtils.AggregatePatchedConfig() );
 	}
 
 

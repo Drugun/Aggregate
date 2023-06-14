@@ -25,6 +25,14 @@ repositories {
 
 	maven { url 'https://maven.terraformersmc.com/releases/com/terraformersmc/modmenu/' }
 
+	maven {
+		name = 'Modrinth'
+		url = 'https://api.modrinth.com/maven'
+		content {
+			includeGroup 'maven.modrinth'
+		}
+	}
+
 }
 
 dependencies {
@@ -46,6 +54,7 @@ dependencies {
 	annotationProcessor modImplementation("io.wispforest:owo-lib:${project.owo_version}")
 	include "io.wispforest:owo-sentinel:${project.owo_version}"
 
+	// modImplementation 'maven.modrinth:patched:fabric-1.19.2-1.1.0'
 
 }
 

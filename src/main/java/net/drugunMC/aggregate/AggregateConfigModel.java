@@ -106,6 +106,9 @@ public class AggregateConfigModel {
     public boolean climbingEnabled = true;
 
     @RestartRequired
+    public boolean climbingLenient = true;
+
+    @RestartRequired
     public boolean climbingWeightCheck = true;
 
     @RestartRequired
@@ -115,7 +118,8 @@ public class AggregateConfigModel {
     @RestartRequired
     public boolean disableKnockback = true;
 
-
+    @RestartRequired
+    public boolean strongerTNT = true;
 
 
 

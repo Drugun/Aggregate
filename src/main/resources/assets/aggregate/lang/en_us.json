@@ -29,10 +29,12 @@
   "text.config.aggregate-config.option.iceFallBreaking": "Falling on ice breaks it",
   "text.config.aggregate-config.option.magmaFallBreaking": "Falling on magma breaks it",
   "text.config.aggregate-config.option.mudBonemeal": "Bone meal can be used on mud blocks",
-  "text.config.aggregate-config.option.climbingEnabled": "Allow players to climb 2 block high walls/cliffs",
+  "text.config.aggregate-config.option.climbingEnabled": "Enable climbing",
+  "text.config.aggregate-config.option.climbingLenient": "Allow climbing diagonally",
   "text.config.aggregate-config.option.climbingWeightCheck": "Players with heavy armour cannot climb",
   "text.config.aggregate-config.option.climbingAngle": "Angle of camera under which climbing is disabled",
   "text.config.aggregate-config.option.disableKnockback": "Attacks do not knock mobs and players away",
+  "text.config.aggregate-config.option.strongerTNT": "TNT is stronger",
 
 
 
