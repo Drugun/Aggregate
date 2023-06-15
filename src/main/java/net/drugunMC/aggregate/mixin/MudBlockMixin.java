@@ -6,17 +6,16 @@ import net.minecraft.entity.Entity;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.passive.PassiveEntity;
 import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.registry.RegistryKeys;
-import net.minecraft.registry.entry.RegistryEntry;
 import net.minecraft.server.world.ServerWorld;
+import net.minecraft.tag.BlockTags;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.util.math.random.Random;
+import net.minecraft.util.registry.RegistryEntry;
 import net.minecraft.util.shape.VoxelShape;
 import net.minecraft.util.shape.VoxelShapes;
 import net.minecraft.world.BlockView;
 import net.minecraft.world.World;
-import net.minecraft.world.WorldView;
 import net.minecraft.world.biome.Biome;
 import net.minecraft.world.gen.feature.ConfiguredFeature;
 import net.minecraft.world.gen.feature.PlacedFeature;
@@ -25,7 +24,6 @@ import net.minecraft.world.gen.feature.VegetationPlacedFeatures;
 import org.spongepowered.asm.mixin.Mixin;
 
 import java.util.List;
-import java.util.Optional;
 
 
 @Mixin(MudBlock.class)
@@ -34,11 +32,11 @@ public abstract class MudBlockMixin extends Block implements Fertilizable {
 
 
 	private static final VoxelShape FULL_SHAPE = VoxelShapes.cuboid(0.0, 0.0, 0.0, 1.0, 1.0, 1.0);
-	private static final VoxelShape SHALLOW_SHAPE = VoxelShapes.cuboid(0.0, 0.0, 0.0, 1.0, 2.5/4.0, 1.0);
-	private static final VoxelShape SHALLOW_SHAPE_PLANTED = VoxelShapes.cuboid(0.0, 0.0, 0.0, 1.0, 3.0/4.0, 1.0);
+	private static final VoxelShape SHALLOW_SHAPE = VoxelShapes.cuboid(0.0, 0.0, 0.0, 1.0, 0.6, 1.0);
+	private static final VoxelShape SHALLOW_SHAPE_PLANTED = VoxelShapes.cuboid(0.0, 0.0, 0.0, 1.0, 0.75, 1.0);
 
-	private static final VoxelShape BELOW_SHAPE = VoxelShapes.cuboid(0.0, 0.0, 0.0, 1.0, 3.0/4.0, 1.0);
-	private static final VoxelShape DEEP_SHAPE_PLANTED = VoxelShapes.cuboid(0.05, 0.0, 0.05, 0.95, 0.8/4.0, 0.95);
+	private static final VoxelShape BELOW_SHAPE = VoxelShapes.cuboid(0.0, 0.0, 0.0, 1.0, 0.95, 1.0);
+	private static final VoxelShape DEEP_SHAPE_PLANTED = VoxelShapes.cuboid(0.05, 0.0, 0.05, 0.95, 0.28, 0.95);
 	private static final VoxelShape EMPTY_SHAPE = VoxelShapes.cuboid(0.0, 0.0, 0.0, 0.0, 0.0, 0.0);
 
 
@@ -49,7 +47,7 @@ public abstract class MudBlockMixin extends Block implements Fertilizable {
 
 
 	@Override
-	public boolean isFertilizable(WorldView world, BlockPos pos, BlockState state, boolean isClient) {
+	public boolean isFertilizable(BlockView world, BlockPos pos, BlockState state, boolean isClient) {
 		if( AggregateMain.CONFIG.mudBonemeal() ){
 			return world.getBlockState(pos.up()).isAir();
 		}
@@ -69,16 +67,15 @@ public abstract class MudBlockMixin extends Block implements Fertilizable {
 	public void grow(ServerWorld world, Random random, BlockPos pos, BlockState state){
 		BlockPos blockPos = pos.up();
 		BlockState blockState = Blocks.GRASS.getDefaultState();
-		Optional<RegistryEntry.Reference<PlacedFeature>> optional = world.getRegistryManager().get(RegistryKeys.PLACED_FEATURE).getEntry(VegetationPlacedFeatures.GRASS_BONEMEAL);
 
-		label49:
+		label46:
 		for(int i = 0; i < 128; ++i) {
 			BlockPos blockPos2 = blockPos;
 
 			for(int j = 0; j < i / 16; ++j) {
 				blockPos2 = blockPos2.add(random.nextInt(3) - 1, (random.nextInt(3) - 1) * random.nextInt(3) / 2, random.nextInt(3) - 1);
 				if (!world.getBlockState(blockPos2.down()).isOf(this) || world.getBlockState(blockPos2).isFullCube(world, blockPos2)) {
-					continue label49;
+					continue label46;
 				}
 			}
 
@@ -97,17 +94,12 @@ public abstract class MudBlockMixin extends Block implements Fertilizable {
 
 					registryEntry = ((RandomPatchFeatureConfig)((ConfiguredFeature)list.get(0)).config()).feature();
 				} else {
-					if (!optional.isPresent()) {
-						continue;
-					}
-
-					registryEntry = (RegistryEntry)optional.get();
+					registryEntry = VegetationPlacedFeatures.GRASS_BONEMEAL;
 				}
 
 				((PlacedFeature)registryEntry.value()).generateUnregistered(world, world.getChunkManager().getChunkGenerator(), random, blockPos2);
 			}
 		}
-
 	}
 
 
@@ -131,10 +123,10 @@ public abstract class MudBlockMixin extends Block implements Fertilizable {
 	@Override
 	@SuppressWarnings("deprecation")
 	public VoxelShape getCollisionShape(BlockState state, BlockView world, BlockPos pos, ShapeContext context) {
-		if( AggregateMain.CONFIG.armourWeight() ){
+		if( AggregateMain.CONFIG.armourWeightMud() ){
 			if(context instanceof EntityShapeContext){
 				if( ((EntityShapeContext) context).getEntity() instanceof PlayerEntity){
-					if( ((PlayerEntity) ((EntityShapeContext) context).getEntity()).getHeavy() ){
+					if( ((PlayerEntity) ((EntityShapeContext) context).getEntity()).getArmourWeight() >= AggregateMain.CONFIG.armourWeightHeavy() ){
 						return EMPTY_SHAPE;
 					}
 				}
@@ -236,20 +228,25 @@ public abstract class MudBlockMixin extends Block implements Fertilizable {
 
 	@Override
 	public void onEntityCollision(BlockState state, World world, BlockPos pos, Entity entity) {
-		if( AggregateMain.CONFIG.armourWeight() ){
+		if( AggregateMain.CONFIG.armourWeightMud() ){
 			if( entity instanceof PlayerEntity){
-				if( ((PlayerEntity)entity).getHeavy() ){
+				if( ((PlayerEntity)entity).getArmourWeight() >= AggregateMain.CONFIG.armourWeightHeavy() ){
 					entity.slowMovement(state, new Vec3d(0.3, 0.7, 0.3));
-					((PlayerEntity) entity).setJumping(false);
-					((PlayerEntity) entity).setJumpPreventionTicks(3);
+					if (! world.getBlockState(pos.up()).isIn(BlockTags.CLIMBABLE)){
+						((PlayerEntity) entity).setJumpPreventionTicks(3);
+						((PlayerEntity) entity).setJumping(false);
+					}
 					return;
 				}
 			}
 		}
-		if( AggregateMain.CONFIG.mudSlow()){
+		if( AggregateMain.CONFIG.mudSlow() ){
 			if(entity instanceof PlayerEntity && world.getBlockState(pos.down()).getBlock() instanceof MudBlock){
-				((PlayerEntity) entity).setJumpPreventionTicks(3);
-				((PlayerEntity) entity).setJumping(false);
+				if (! world.getBlockState(pos.up()).isIn(BlockTags.CLIMBABLE)){
+					((PlayerEntity) entity).setJumpPreventionTicks(3);
+					((PlayerEntity) entity).setJumping(false);
+				}
+
 				if(world.getBlockState(pos.up()).getBlock() instanceof AirBlock){
 					entity.slowMovement(state, new Vec3d(0.5, 0.7, 0.5));
 				}

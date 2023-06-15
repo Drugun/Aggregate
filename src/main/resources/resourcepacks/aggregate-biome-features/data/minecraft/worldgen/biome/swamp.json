@@ -1,12 +1,14 @@
 {
-  "temperature": 0.95,
+  "temperature": 0.8,
   "downfall": 0.9,
   "precipitation": "rain",
   "effects": {
-    "sky_color": 7842047,
+    "sky_color": 7907327,
     "fog_color": 12638463,
-    "water_color": 4159204,
-    "water_fog_color": 329011,
+    "water_color": 6388580,
+    "water_fog_color": 2302743,
+    "foliage_color": 6975545,
+    "grass_color_modifier": "swamp",
     "mood_sound": {
       "sound": "minecraft:ambient.cave",
       "tick_delay": 6000,
@@ -14,7 +16,7 @@
       "offset": 2
     },
     "music": {
-      "sound": "minecraft:music.overworld.jungle_and_forest",
+      "sound": "minecraft:music.overworld.swamp",
       "min_delay": 12000,
       "max_delay": 24000,
       "replace_current_music": false
@@ -56,28 +58,10 @@
         "maxCount": 4
       },
       {
-        "type": "minecraft:chicken",
-        "weight": 10,
-        "minCount": 4,
-        "maxCount": 4
-      },
-      {
-        "type": "minecraft:parrot",
-        "weight": 40,
-        "minCount": 1,
-        "maxCount": 2
-      },
-      {
-        "type": "minecraft:panda",
-        "weight": 1,
-        "minCount": 1,
-        "maxCount": 2
-      },
-      {
         "type": "minecraft:frog",
-        "weight": 40,
+        "weight": 10,
         "minCount": 2,
-        "maxCount": 3
+        "maxCount": 5
       }
     ],
     "misc": [],
@@ -131,10 +115,10 @@
         "maxCount": 1
       },
       {
-        "type": "minecraft:ocelot",
-        "weight": 2,
+        "type": "minecraft:slime",
+        "weight": 1,
         "minCount": 1,
-        "maxCount": 3
+        "maxCount": 1
       }
     ],
     "underground_water_creature": [
@@ -166,6 +150,8 @@
       "minecraft:amethyst_geode"
     ],
     [
+      "minecraft:fossil_upper",
+      "minecraft:fossil_lower",
       "minecraft:monster_room",
       "minecraft:monster_room_deep"
     ],
@@ -197,9 +183,8 @@
       "minecraft:ore_lapis_buried",
       "minecraft:ore_copper",
       "minecraft:underwater_magma",
-      "minecraft:disk_sand",
       "minecraft:disk_clay",
-      "minecraft:disk_gravel"
+      "aggregate:swamp_mud"
     ],
     [],
     [
@@ -208,16 +193,19 @@
     ],
     [
       "minecraft:glow_lichen",
-      "minecraft:bamboo_light",
-      "minecraft:trees_jungle",
-      "minecraft:flower_warm",
+      "minecraft:trees_swamp",
+      "minecraft:flower_swamp",
+      "minecraft:patch_grass_normal",
       "minecraft:patch_grass_jungle",
+      "minecraft:patch_dead_bush",
+      "minecraft:patch_waterlily",
+      "minecraft:brown_mushroom_swamp",
+      "minecraft:red_mushroom_swamp",
       "minecraft:brown_mushroom_normal",
       "minecraft:red_mushroom_normal",
-      "minecraft:patch_sugar_cane",
+      "minecraft:patch_sugar_cane_swamp",
       "minecraft:patch_pumpkin",
-      "minecraft:vines",
-      "minecraft:patch_melon",
+      "minecraft:seagrass_swamp",
       "aggregate:swamp_moss"
     ],
     [

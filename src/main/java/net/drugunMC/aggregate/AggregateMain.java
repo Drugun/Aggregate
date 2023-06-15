@@ -4,7 +4,6 @@ import net.drugunMC.aggregate.entity.projectile.JavelinStoneEntity;
 import net.drugunMC.aggregate.item.JavelinStone;
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
-import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
 import net.fabricmc.fabric.api.loot.v2.LootTableEvents;
 import net.fabricmc.fabric.api.object.builder.v1.entity.FabricEntityTypeBuilder;
 import net.fabricmc.fabric.api.resource.ResourceManagerHelper;
@@ -14,14 +13,13 @@ import net.minecraft.entity.EntityDimensions;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.SpawnGroup;
 import net.minecraft.item.Item;
-import net.minecraft.item.ItemGroups;
+import net.minecraft.item.ItemGroup;
 import net.minecraft.item.Items;
 import net.minecraft.loot.LootPool;
 import net.minecraft.loot.entry.ItemEntry;
 import net.minecraft.loot.provider.number.ConstantLootNumberProvider;
-import net.minecraft.registry.Registries;
-import net.minecraft.registry.Registry;
 import net.minecraft.util.Identifier;
+import net.minecraft.util.registry.Registry;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -33,16 +31,19 @@ public class AggregateMain implements ModInitializer {
 
 	public static final net.drugunMC.aggregate.AggregateConfig CONFIG = net.drugunMC.aggregate.AggregateConfig.createAndLoad();
 
+
+
 	static {
 		AggregateJsonCondProvider.init();
+		//PatchedTestConditions.register( new Identifier(ModID, "aggregate-cfg"), new AggregateUtils.AggregatePatchedConfig() );
 	}
 
 
-	public static final Identifier JUNGLE_SWAMP_ADDITIONS = new Identifier(ModID, "jungle-swamp-additions");
+	public static final Identifier AGGREGATE_BIOME_FEATURES = new Identifier(ModID, "aggregate-biome-features");
 
 
 	public static final EntityType<JavelinStoneEntity> JavelinStoneEntityType = Registry.register(
-			Registries.ENTITY_TYPE,
+			Registry.ENTITY_TYPE,
 			new Identifier(ModID, "javelin_stone_entity"),
 			FabricEntityTypeBuilder.<JavelinStoneEntity>create(SpawnGroup.MISC, JavelinStoneEntity::new)
 					.dimensions(EntityDimensions.fixed(0.25F, 0.25F))
@@ -62,7 +63,8 @@ public class AggregateMain implements ModInitializer {
 	private static final Identifier GOAT_LOOT_TABLE_ID = new Identifier("minecraft", "entities/goat");
 
 
-	public static final Item JAVELIN_STONE = new JavelinStone(new FabricItemSettings().maxCount(4));
+
+	public static final Item JAVELIN_STONE = new JavelinStone(new FabricItemSettings().group(ItemGroup.COMBAT).maxCount(4));
 
 
 
@@ -74,12 +76,11 @@ public class AggregateMain implements ModInitializer {
 
 
 
-		Registry.register(Registries.ITEM, new Identifier(ModID, "javelin_stone"), JAVELIN_STONE);
-		ItemGroupEvents.modifyEntriesEvent(ItemGroups.COMBAT).register(entries -> entries.add(JAVELIN_STONE));
+		Registry.register(Registry.ITEM, new Identifier(ModID, "javelin_stone"), JAVELIN_STONE);
 
 
 		FabricLoader.getInstance().getModContainer(ModID).ifPresent((modContainer) -> {
-			ResourceManagerHelper.registerBuiltinResourcePack(JUNGLE_SWAMP_ADDITIONS, modContainer, "Aggregate - jungles/swamps", ResourcePackActivationType.NORMAL);
+			ResourceManagerHelper.registerBuiltinResourcePack(AGGREGATE_BIOME_FEATURES, modContainer, "Aggregate - biomes", ResourcePackActivationType.NORMAL);
 		});
 
 

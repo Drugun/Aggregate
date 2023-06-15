@@ -19,7 +19,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 @Mixin(PlayerEntity.class)
 public abstract class PlayerEntityMixin extends LivingEntity implements PlayerWeightInterface, JumpCooldownTimerInterface {
 
-    public boolean isHeavy = false;
+    public int armourWeight = 0;
 
     public boolean hasJumpedFlag = false;
 
@@ -44,32 +44,32 @@ public abstract class PlayerEntityMixin extends LivingEntity implements PlayerWe
         }
         if( ((PlayerEntity)(Object)this).age % 100 == 0){
             if( AggregateMain.CONFIG.armourWeight() ){
+                int arm = 0;
                 Item armBody = ((PlayerEntity)(Object)this).getEquippedStack(EquipmentSlot.CHEST).getItem();
                 Item armLegs = ((PlayerEntity)(Object)this).getEquippedStack(EquipmentSlot.LEGS).getItem();
                 Item armHead = ((PlayerEntity)(Object)this).getEquippedStack(EquipmentSlot.HEAD).getItem();
                 Item armFeet = ((PlayerEntity)(Object)this).getEquippedStack(EquipmentSlot.FEET).getItem();
                 if( armBody != Items.AIR && armBody != Items.LEATHER_CHESTPLATE){
-                    isHeavy = true;
+                    arm += 4;
                 }
-                else if(armLegs != Items.AIR && armLegs != Items.LEATHER_LEGGINGS){
-                    isHeavy = true;
+                if(armLegs != Items.AIR && armLegs != Items.LEATHER_LEGGINGS){
+                    arm += 4;
                 }
-                else if(armHead != Items.AIR && armHead != Items.LEATHER_HELMET && armHead != Items.TURTLE_HELMET){
-                    if(armFeet != Items.AIR && armFeet != Items.LEATHER_BOOTS){
-                        isHeavy = true;
-                    }
+                if(armHead != Items.AIR && armHead != Items.LEATHER_HELMET && armHead != Items.TURTLE_HELMET){
+                    arm += 2;
                 }
-                else{
-                    isHeavy = false;
+                if(armFeet != Items.AIR && armFeet != Items.LEATHER_BOOTS){
+                    arm += 2;
                 }
 
 
-                //DrugunsStuff.LOGGER.info(String.valueOf(isHeavy));
+                armourWeight = arm;
 
             }
             else{
-                isHeavy = false;
+                armourWeight = 0;
             }
+
 
 
         }
@@ -78,16 +78,16 @@ public abstract class PlayerEntityMixin extends LivingEntity implements PlayerWe
     }
 
     @Override
-    public boolean getHeavy() {
+    public int getArmourWeight() {
 
-            return isHeavy;
+            return armourWeight;
 
     }
 
     @Override
-    public void setHeavy(boolean in) {
+    public void setArmourWeight(int in) {
 
-        isHeavy = in;
+        armourWeight = in;
 
     }
 

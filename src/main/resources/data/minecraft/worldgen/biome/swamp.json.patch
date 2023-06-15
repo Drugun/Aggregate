@@ -1,0 +1,17 @@
+[
+  {
+      "op": "test",
+      "type": "aggregate-cfg",
+      "value": "swampmud"
+  },
+  {
+    "op": "add",
+    "path": "/features/6/-",
+    "value": "aggregate:swamp_mud"
+  },
+  {
+      "op": "add",
+      "path": "/features/9/-",
+      "value": "aggregate:swamp_moss"
+    }
+]
