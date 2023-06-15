@@ -90,7 +90,7 @@ public abstract class LivingEntityMixin {
     private void injected6(CallbackInfoReturnable<Boolean> cir){
         if( ((LivingEntity)(Object)this).getType() == EntityType.PLAYER ){
             if( AggregateMain.CONFIG.mudSlow() ){
-                if( ((LivingEntity)(Object)this).getBlockStateAtPos().isOf(Blocks.MUD) && (((LivingEntity)(Object)this).horizontalCollision || ((LivingEntity)(Object)this).world.getBlockState(((LivingEntity)(Object)this).getBlockPos().up()).isIn(BlockTags.CLIMBABLE) ) ){
+                if( ((LivingEntity)(Object)this).getBlockStateAtPos().isOf(Blocks.MUD) && (((LivingEntity)(Object)this).horizontalCollision || ((LivingEntity)(Object)this).getWorld().getBlockState(((LivingEntity)(Object)this).getBlockPos().up()).isIn(BlockTags.CLIMBABLE) ) ){
                     cir.setReturnValue(true);
                     cir.cancel();
                 }
@@ -141,8 +141,8 @@ public abstract class LivingEntityMixin {
     }
 
     public boolean isBlockClimbable(BlockPos pos){
-        if( ((LivingEntity)(Object)this).world.getBlockState(pos).getCollisionShape(((LivingEntity)(Object)this).world, pos) != VoxelShapes.empty() ){
-            if( ((LivingEntity)(Object)this).world.getBlockState(pos.up()).getCollisionShape(((LivingEntity)(Object)this).world, pos.up()) == VoxelShapes.empty() ){
+        if( ((LivingEntity)(Object)this).getWorld().getBlockState(pos).getCollisionShape(((LivingEntity)(Object)this).getWorld(), pos) != VoxelShapes.empty() ){
+            if( ((LivingEntity)(Object)this).getWorld().getBlockState(pos.up()).getCollisionShape(((LivingEntity)(Object)this).getWorld(), pos.up()) == VoxelShapes.empty() ){
                 return true;
             }
         }
