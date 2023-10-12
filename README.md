@@ -28,6 +28,7 @@ A collection of various small additions and changes bundled into one mod. Most c
   - Players can climb 1 to 2 block high walls and cliffs, 3 block high with jump.
   - Players and mobs are not knocked away by normal attacks.
   - TNT is stronger.
+  - Player movement speed and sprint speed can be adjusted.
 
 
 

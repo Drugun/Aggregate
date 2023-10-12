@@ -35,6 +35,8 @@
   "text.config.aggregate-config.option.climbingAngle": "Angle of camera under which climbing is disabled",
   "text.config.aggregate-config.option.disableKnockback": "Attacks do not knock mobs and players away",
   "text.config.aggregate-config.option.strongerTNT": "TNT is stronger",
+  "text.config.aggregate-config.option.basePlayerMovementMult": "Multiplier to player movement speed base",
+  "text.config.aggregate-config.option.playerSprintSpeed": "Sprinting speed (0.3 = sprinting boosts speed 30%)",
 
 
 

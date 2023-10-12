@@ -14,4 +14,4 @@ accessible field net/minecraft/item/ToolMaterials attackDamage F
 mutable field net/minecraft/item/ArmorMaterials durabilityMultiplier I
 accessible field net/minecraft/item/ArmorMaterials durabilityMultiplier I
 accessible field net/minecraft/entity/LivingEntity jumping Z
-
+accessible field net/minecraft/entity/LivingEntity SPRINTING_SPEED_BOOST_ID Ljava/util/UUID;

@@ -121,7 +121,13 @@ public class AggregateConfigModel {
     @RestartRequired
     public boolean strongerTNT = true;
 
+    @RestartRequired
+    @RangeConstraint(min = 0.2, max = 3)
+    public float basePlayerMovementMult = 1f;
 
+    @RestartRequired
+    @RangeConstraint(min = 0.1, max = 3)
+    public float playerSprintSpeed = 0.3f;
 
 
 
