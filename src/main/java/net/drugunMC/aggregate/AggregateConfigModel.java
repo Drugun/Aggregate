@@ -17,109 +17,109 @@ public class AggregateConfigModel {
 
 
     @RestartRequired
-    public boolean javelinRecipe = true;
+    public boolean javelinRecipe = false;
 
     @RestartRequired
-    public boolean animalBones = true;
+    public boolean animalBones = false;
 
     @RestartRequired
-    public boolean safeItemsExplosion = true;
+    public boolean safeItemsExplosion = false;
 
     @RestartRequired
     @PredicateConstraint("predicatePositive")
-    public int suffocationTimer = 200;
+    public int suffocationTimer = 5;
 
     @RestartRequired
-    public boolean arrowRecipe = true;
+    public boolean arrowRecipe = false;
 
     @RestartRequired
-    public boolean mudSlow = true;
+    public boolean mudSlow = false;
 
     @RestartRequired
-    public boolean sugarCane = true;
+    public boolean sugarCane = false;
 
     @RestartRequired
-    public boolean safeFire = true;
+    public boolean safeFire = false;
 
     @RestartRequired
-    public boolean safeCreepers = true;
+    public boolean safeCreepers = false;
 
     @RestartRequired
-    public boolean safeItemsFire = true;
+    public boolean safeItemsFire = false;
 
     @RestartRequired
-    public boolean frogMixin = true;
+    public boolean frogMixin = false;
 
     @RestartRequired
-    public boolean leatherRecipe = true;
+    public boolean leatherRecipe = false;
 
     @RestartRequired
-    public boolean improveItemMaterials = true;
+    public boolean improveItemMaterials = false;
 
     @RestartRequired
-    public boolean improveArmourMaterials = true;
+    public boolean improveArmourMaterials = false;
 
     @RestartRequired
-    public boolean infiniteRepair = true;
+    public boolean infiniteRepair = false;
 
     @RestartRequired
-    public boolean armourWeight = true;
+    public boolean armourWeight = false;
 
     @RestartRequired
-    public boolean armourWeightLilyPad = true;
+    public boolean armourWeightLilyPad = false;
 
     @RestartRequired
-    public boolean armourWeightMud = true;
+    public boolean armourWeightMud = false;
 
     @RestartRequired
-    public boolean armourWeightMoss = true;
+    public boolean armourWeightMoss = false;
 
     @RestartRequired
-    public boolean armourWeightFallingBlocks = true;
+    public boolean armourWeightFallingBlocks = false;
 
     @RestartRequired
     @RangeConstraint(min = 0, max = 20)
     public int armourWeightHeavy = 7;
 
     @RestartRequired
-    public boolean betterMovement = true;
+    public boolean betterMovement = false;
 
     @RestartRequired
-    public boolean waterFloating = true;
+    public boolean waterFloating = false;
 
     @RestartRequired
-    public boolean iceFallBreaking = true;
+    public boolean iceFallBreaking = false;
 
     @RestartRequired
-    public boolean magmaFallBreaking = true;
+    public boolean magmaFallBreaking = false;
 
     @RestartRequired
-    public boolean iceWeightBreaking = true;
+    public boolean iceWeightBreaking = false;
 
     @RestartRequired
-    public boolean magmaWeightBreaking = true;
+    public boolean magmaWeightBreaking = false;
 
     @RestartRequired
-    public boolean mudBonemeal = true;
+    public boolean mudBonemeal = false;
 
     @RestartRequired
-    public boolean climbingEnabled = true;
+    public boolean climbingEnabled = false;
 
     @RestartRequired
-    public boolean climbingLenient = true;
+    public boolean climbingLenient = false;
 
     @RestartRequired
-    public boolean climbingWeightCheck = true;
+    public boolean climbingWeightCheck = false;
 
     @RestartRequired
     @RangeConstraint(min = -90, max = 90)
     public float climbingAngle = -45f;
 
     @RestartRequired
-    public boolean disableKnockback = true;
+    public boolean disableKnockback = false;
 
     @RestartRequired
-    public boolean strongerTNT = true;
+    public boolean strongerTNT = false;
 
     @RestartRequired
     @RangeConstraint(min = 0.2, max = 3)
@@ -136,13 +136,13 @@ public class AggregateConfigModel {
     public boolean disallowReplaceWaterFlowing = false;
 
     @RestartRequired
-    public boolean disallowReplaceLavaSource = true;
+    public boolean disallowReplaceLavaSource = false;
 
     @RestartRequired
-    public boolean disallowReplaceLavaFlowing = true;
+    public boolean disallowReplaceLavaFlowing = false;
 
     @RestartRequired
-    public boolean bucketExploitFix = true;
+    public boolean bucketExploitFix = false;
 
     @RestartRequired
     public boolean disallowReplaceFluidNonPlayer = false;

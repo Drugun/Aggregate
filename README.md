@@ -1,6 +1,6 @@
 # Aggregate
 
-A collection of various small additions and changes bundled into one mod. Most can be individually enabled, disabled or configured.
+A collection of various small additions and changes bundled into one mod. Most can be individually enabled, disabled or configured. All features are disabled by default.
 
 ## Contents
 
