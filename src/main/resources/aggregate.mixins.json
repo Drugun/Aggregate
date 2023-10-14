@@ -9,6 +9,7 @@
     "CreeperMixin",
     "FireMixin",
     "FireproofItemsMixin",
+    "FluidBlockMixin",
     "FrogMixin",
     "GravelBlockMixin",
     "IceBlockMixin",

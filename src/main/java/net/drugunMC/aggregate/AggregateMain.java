@@ -73,7 +73,7 @@ public class AggregateMain implements ModInitializer {
 	@Override
 	public void onInitialize() {
 
-		LOGGER.info("Aggregate loaded!");
+		LOGGER.info("Aggregate loading!");
 
 
 

@@ -129,7 +129,23 @@ public class AggregateConfigModel {
     @RangeConstraint(min = 0.1, max = 3)
     public float playerSprintSpeed = 0.3f;
 
+    @RestartRequired
+    public boolean disallowReplaceWaterSource = false;
 
+    @RestartRequired
+    public boolean disallowReplaceWaterFlowing = false;
+
+    @RestartRequired
+    public boolean disallowReplaceLavaSource = true;
+
+    @RestartRequired
+    public boolean disallowReplaceLavaFlowing = true;
+
+    @RestartRequired
+    public boolean bucketExploitFix = true;
+
+    @RestartRequired
+    public boolean disallowReplaceFluidNonPlayer = false;
 
 
 }

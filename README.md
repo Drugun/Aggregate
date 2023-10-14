@@ -22,13 +22,14 @@ A collection of various small additions and changes bundled into one mod. Most c
   - Disabled escalating level cost penalty for repeated item repairs at anvil.
   - Armour weight system - players whose armour weight points cross a threshold are marked as heavy. (chest/legs = 4, boots/helmet = 2, leather = 0).
   - Weak blocks (ice, magma, lilypad, mud, moss carpet, sand, gravel) cannot support players wearing heavy armour and will fail in different ways.
-  - Altered player movement physics. Player air drag and air control greatly reduced. Jumping preserves current speed.
+  - Improved player movement physics. Player air drag and air control greatly reduced. Jumping preserves current speed.
   - Players don't sink in water.
   - Ice and magma blocks break when a player falls on them from more than 2 blocks height.
   - Players can climb 1 to 2 block high walls and cliffs, 3 block high with jump.
   - Players and mobs are not knocked away by normal attacks.
   - TNT is stronger.
   - Player movement speed and sprint speed can be adjusted.
+  - Disallow replacing water or lava with blocks. Can be toggled for water, lava, source and flowing blocks separately. Option to prevent pouring a fluid bucket into a source block of the same fluid also included.
 
 
 
@@ -51,6 +52,6 @@ Some features are available in the form of datapacks (built-in, no additional do
 ## Known Issues and notes
 - Built-in datapacks don't get baked into saves, so keep it in mind when updating the mod or transferring saves.
 - The diagonal climbing option makes climbing more reliable, but it is slightly exploitable.
-- The datapack features overwrite biome changes made by other mods. Better compatibility is being worked on.
+- The datapack features may overwrite biome changes made by other mods. Better compatibility is being worked on.
 
 

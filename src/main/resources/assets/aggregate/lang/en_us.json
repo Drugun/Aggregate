@@ -22,8 +22,8 @@
   "text.config.aggregate-config.option.armourWeightMoss": "Moss carpets cannot hold heavily armoured players",
   "text.config.aggregate-config.option.armourWeightFallingBlocks": "Sand and gravel cannot hold heavily armoured players",
   "text.config.aggregate-config.option.armourWeightHeavy": "Armour weight - heavy threshold",
-  "text.config.aggregate-config.option.betterMovement": "Altered movement physics",
-  "text.config.aggregate-config.option.waterFloating": "Player floats in water",
+  "text.config.aggregate-config.option.betterMovement": "Improved movement physics",
+  "text.config.aggregate-config.option.waterFloating": "Players don't sink in water",
   "text.config.aggregate-config.option.iceWeightBreaking": "Walking on ice with heavy armour breaks it",
   "text.config.aggregate-config.option.magmaWeightBreaking": "Walking on magma with heavy armour breaks it",
   "text.config.aggregate-config.option.iceFallBreaking": "Falling on ice breaks it",
@@ -37,6 +37,12 @@
   "text.config.aggregate-config.option.strongerTNT": "TNT is stronger",
   "text.config.aggregate-config.option.basePlayerMovementMult": "Multiplier to player movement speed base",
   "text.config.aggregate-config.option.playerSprintSpeed": "Sprinting speed (0.3 = sprinting boosts speed 30%)",
+  "text.config.aggregate-config.option.disallowReplaceWaterSource": "Disallow players replacing source water with blocks.",
+  "text.config.aggregate-config.option.disallowReplaceWaterFlowing": "Disallow players replacing flowing water with blocks.",
+  "text.config.aggregate-config.option.disallowReplaceLavaSource": "Disallow players replacing source lava with blocks.",
+  "text.config.aggregate-config.option.disallowReplaceLavaFlowing": "Disallow players replacing flowing lava with blocks.",
+  "text.config.aggregate-config.option.bucketExploitFix": "Disallow pouring a bucket of fluid into a block of the same fluid.",
+  "text.config.aggregate-config.option.disallowReplaceFluidNonPlayer": "Settings disabling fluid replacement affect non-player causes (falling blocks, etc.).",
 
 
 
