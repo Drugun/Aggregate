@@ -38,7 +38,7 @@ Some features are available in the form of datapacks (built-in, no additional do
 
 - Features added via the Aggregate biome features datapack:
   - Frogs spawn in jungles.
-  - More grass in swamps.
+  - More grass in swamps and jungles.
   - Mud blocks spawn in swamps and jungles along with moss carpets.
 
 

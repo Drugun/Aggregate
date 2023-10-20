@@ -30,7 +30,7 @@ public abstract class FluidBlockMixin extends Block {
 
     @Override
     public boolean canReplace(BlockState state, ItemPlacementContext context) {
-        if(context.getPlayer() == null && !AggregateMain.CONFIG.disallowReplaceFluidNonPlayer() && (this.fluid == Fluids.WATER || this.fluid == Fluids.LAVA)){
+        if(context.getPlayer() == null && !AggregateMain.CONFIG.disallowReplaceFluidNonPlayer() ){
             return super.canReplace(state, context);
         }
         if(this.fluid == Fluids.WATER){

@@ -69,7 +69,8 @@
       "minecraft:disk_sand",
       "minecraft:disk_clay",
       "minecraft:disk_gravel",
-      "aggregate:jungle_mud"
+      "aggregate:jungle_mud",
+      "aggregate:jungle_mud_shallow"
     ],
     [],
     [
@@ -88,7 +89,8 @@
       "minecraft:patch_pumpkin",
       "minecraft:vines",
       "minecraft:patch_melon",
-      "aggregate:swamp_moss"
+      "aggregate:swamp_moss",
+      "aggregate:patch_grass_extra_pl"
     ],
     [
       "minecraft:freeze_top_layer"

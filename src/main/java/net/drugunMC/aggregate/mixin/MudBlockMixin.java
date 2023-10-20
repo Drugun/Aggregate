@@ -38,8 +38,10 @@ public abstract class MudBlockMixin extends Block implements Fertilizable {
 	private static final VoxelShape SHALLOW_SHAPE = VoxelShapes.cuboid(0.0, 0.0, 0.0, 1.0, 0.6, 1.0);
 	private static final VoxelShape SHALLOW_SHAPE_PLANTED = VoxelShapes.cuboid(0.0, 0.0, 0.0, 1.0, 0.75, 1.0);
 
-	private static final VoxelShape BELOW_SHAPE = VoxelShapes.cuboid(0.0, 0.0, 0.0, 1.0, 0.95, 1.0);
-	private static final VoxelShape DEEP_SHAPE_PLANTED = VoxelShapes.cuboid(0.05, 0.0, 0.05, 0.95, 0.28, 0.95);
+	private static final VoxelShape BELOW_SHAPE = VoxelShapes.cuboid(0.0, 0.0, 0.0, 1.0, 0.9, 1.0);
+	private static final VoxelShape DEEP_SHAPE = VoxelShapes.cuboid(0.05, 0.0, 0.05, 0.95, 1/16f, 0.95);
+
+	private static final VoxelShape DEEP_SHAPE_PLANTED = VoxelShapes.cuboid(0.05, 0.0, 0.05, 0.95, 0.3, 0.95);
 	private static final VoxelShape EMPTY_SHAPE = VoxelShapes.cuboid(0.0, 0.0, 0.0, 0.0, 0.0, 0.0);
 
 
@@ -136,7 +138,9 @@ public abstract class MudBlockMixin extends Block implements Fertilizable {
 			if(context instanceof EntityShapeContext){
 				if( ((EntityShapeContext) context).getEntity() instanceof PlayerEntity){
 					if( ((PlayerEntity) ((EntityShapeContext) context).getEntity()).getArmourWeight() >= AggregateMain.CONFIG.armourWeightHeavy() ){
-						return EMPTY_SHAPE;
+						if (world.getBlockState(pos.down()).getBlock() instanceof MudBlock){
+							return EMPTY_SHAPE;
+						}
 					}
 				}
 
@@ -149,19 +153,16 @@ public abstract class MudBlockMixin extends Block implements Fertilizable {
 					if(entity instanceof LivingEntity && !(entity instanceof PassiveEntity) ){
 						Block above = world.getBlockState(pos.up()).getBlock();
 						Block below = world.getBlockState(pos.down()).getBlock();
+						if (above instanceof MudBlock) {
+							return BELOW_SHAPE;
+						}
 						if (below instanceof MudBlock) {
-							if (above instanceof MudBlock) {
-								return BELOW_SHAPE;
-							}
 							if (above instanceof AirBlock) {
-								return EMPTY_SHAPE;
+								return DEEP_SHAPE;
 							}
 							return DEEP_SHAPE_PLANTED;
 						}
 						else{
-							if (above instanceof MudBlock) {
-								return BELOW_SHAPE;
-							}
 							if (above instanceof AirBlock) {
 								return SHALLOW_SHAPE;
 							}
@@ -237,30 +238,27 @@ public abstract class MudBlockMixin extends Block implements Fertilizable {
 
 	@Override
 	public void onEntityCollision(BlockState state, World world, BlockPos pos, Entity entity) {
-		if( AggregateMain.CONFIG.armourWeightMud() ){
-			if( entity instanceof PlayerEntity){
-				if( ((PlayerEntity)entity).getArmourWeight() >= AggregateMain.CONFIG.armourWeightHeavy() ){
-					entity.slowMovement(state, new Vec3d(0.3, 0.7, 0.3));
-					if (! world.getBlockState(pos.up()).isIn(BlockTags.CLIMBABLE)){
-						((PlayerEntity) entity).setJumpPreventionTicks(3);
-						((PlayerEntity) entity).setJumping(false);
-					}
-					return;
-				}
-			}
-		}
 		if( AggregateMain.CONFIG.mudSlow() ){
 			if(entity instanceof PlayerEntity && world.getBlockState(pos.down()).getBlock() instanceof MudBlock){
 				if (! world.getBlockState(pos.up()).isIn(BlockTags.CLIMBABLE)){
 					((PlayerEntity) entity).setJumpPreventionTicks(3);
 					((PlayerEntity) entity).setJumping(false);
 				}
-
 				if(world.getBlockState(pos.up()).getBlock() instanceof AirBlock){
-					entity.slowMovement(state, new Vec3d(0.5, 0.7, 0.5));
+					if( AggregateMain.CONFIG.armourWeight() && ((PlayerEntity)entity).getArmourWeight() >= AggregateMain.CONFIG.armourWeightHeavy() ){
+						entity.slowMovement(state, new Vec3d(0.35, 0.7, 0.35));
+					}
+					else{
+						entity.slowMovement(state, new Vec3d(0.5, 0.7, 0.5));
+					}
 				}
 				else{
-					entity.slowMovement(state, new Vec3d(0.85, 0.7, 0.85));
+					if( AggregateMain.CONFIG.armourWeight() && ((PlayerEntity)entity).getArmourWeight() >= AggregateMain.CONFIG.armourWeightHeavy() ){
+						entity.slowMovement(state, new Vec3d(0.5, 0.7, 0.5));
+					}
+					else{
+						entity.slowMovement(state, new Vec3d(0.7, 0.7, 0.7));
+					}
 				}
 			}
 		}

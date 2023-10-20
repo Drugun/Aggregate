@@ -1,5 +1,5 @@
 {
-  "feature": "aggregate:swamp_moss_patch",
+  "feature": "aggregate:swamp_mud_shallow_patch",
   "placement": [
     {
       "type": "minecraft:random_offset",
@@ -14,7 +14,7 @@
     },
     {
       "type": "minecraft:count",
-      "count": 6
+      "count": 15
     },
     {
       "type": "minecraft:heightmap",
