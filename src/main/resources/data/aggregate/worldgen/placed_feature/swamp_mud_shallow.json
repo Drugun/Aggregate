@@ -2,26 +2,29 @@
   "feature": "aggregate:swamp_mud_shallow_patch",
   "placement": [
     {
-      "type": "minecraft:random_offset",
-      "xz_spread": {
-        "type": "minecraft:uniform",
-        "value": {
-          "min_inclusive": -16,
-          "max_inclusive": 16
-        }
-      },
-      "y_spread": 0
+      "type": "minecraft:noise_based_count",
+      "noise_to_count_ratio": 10,
+      "noise_factor": 10,
+      "noise_offset": 0
     },
     {
       "type": "minecraft:count",
-      "count": 15
+      "count": 2
     },
     {
       "type": "minecraft:heightmap",
-      "heightmap": "WORLD_SURFACE_WG"
+      "heightmap": "OCEAN_FLOOR_WG"
+    },
+    {
+      "type": "minecraft:in_square"
     },
     {
       "type": "minecraft:biome"
+    },
+    {
+      "type": "minecraft:random_offset",
+      "xz_spread": 0,
+      "y_spread": -2
     }
   ]
 }
