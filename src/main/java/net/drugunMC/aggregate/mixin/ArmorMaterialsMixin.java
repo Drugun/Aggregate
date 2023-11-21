@@ -20,7 +20,7 @@ public abstract class ArmorMaterialsMixin {
 
 
 	@Inject(method = "<init>", at = @At("RETURN"))
-	public void injectedA(String string, int i, String name, int durabilityMultiplier, EnumMap protectionAmounts, int enchantability, SoundEvent equipSound, float toughness, float knockbackResistance, Supplier repairIngredientSupplier, CallbackInfo ci){
+	public void injectedA(String string, int i, String name, int durabilityMultiplier, int[] protectionAmounts, int enchantability, SoundEvent equipSound, float toughness, float knockbackResistance, Supplier repairIngredientSupplier, CallbackInfo ci){
 		if( AggregateMain.CONFIG.improveArmourMaterials() ){
 			if( ((ArmorMaterials)(Object)this).durabilityMultiplier == 5 ){    // leather
 				((ArmorMaterials)(Object)this).durabilityMultiplier = 12;

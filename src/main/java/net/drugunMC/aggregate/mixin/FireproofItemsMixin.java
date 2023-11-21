@@ -32,10 +32,10 @@ public abstract class FireproofItemsMixin extends Entity {
 	@Inject(method = "damage(Lnet/minecraft/entity/damage/DamageSource;F)Z", at = @At("HEAD"), cancellable = true)
 	private void injectedB(DamageSource source, float amount, CallbackInfoReturnable<Boolean> cir) {
 		if( AggregateMain.CONFIG.safeItemsExplosion()){
-
-			cir.setReturnValue(false);
-			cir.cancel();
-
+			if(source.isExplosive()){
+				cir.setReturnValue(false);
+				cir.cancel();
+			}
 		}
 
 	}
