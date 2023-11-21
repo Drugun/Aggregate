@@ -24,7 +24,7 @@ public abstract class SandBlockMixin extends FallingBlock {
     public void onSteppedOn(World world, BlockPos pos, BlockState state, Entity entity){
         if( entity instanceof PlayerEntity ){
             if( ((PlayerEntity)entity).getArmourWeight() >= AggregateMain.CONFIG.armourWeightHeavy() ){
-                world.scheduleBlockTick(pos, this, this.getFallDelay());
+                world.createAndScheduleBlockTick(pos, this, this.getFallDelay());
             }
         }
     }
